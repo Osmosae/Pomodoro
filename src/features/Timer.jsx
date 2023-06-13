@@ -5,7 +5,7 @@ import PauseButton from "./PauseButton"
 import SettingsButton from "./SettingsButton"
 
 function Timer() {
-    const percentage = 10
+    const percentage = 20
     return (
         <div>
             <CircularProgressbar
@@ -25,7 +25,7 @@ function Timer() {
                     // Colors
                     pathColor: `rgba(199, 62, 62, ${percentage / 100})`,
                     textColor: "#eee",
-                    trailColor: "rgba(255, 255, 255, 0.2)",
+                    trailColor: `rgba(120, 120, 120, ${percentage / 100})`,
                     backgroundColor: "#00ff11",
                 })}
             />
