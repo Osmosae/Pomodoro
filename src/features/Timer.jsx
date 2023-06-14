@@ -3,8 +3,11 @@ import "react-circular-progressbar/dist/styles.css"
 import PlayButton from "./PlayButton"
 import PauseButton from "./PauseButton"
 import SettingsButton from "./SettingsButton"
+import { useContext, useState } from "react"
+import SettingsContext from "./SettingsContext"
 
 function Timer() {
+    const settingsInfo = useContext(SettingsContext)
     const percentage = 20
     return (
         <div>
@@ -34,7 +37,7 @@ function Timer() {
                 <PauseButton />
             </div>
             <div>
-                <SettingsButton />
+                <SettingsButton onClick={() => settingsInfo.setShowSettings(true)} />
             </div>
         </div>
     )

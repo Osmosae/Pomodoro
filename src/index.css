@@ -35,10 +35,21 @@ button.settings svg {
     margin-right: 0.6rem;
 }
 
-.settingsPage {
-    text-align: left;
-}
-
 label {
     display: block;
+}
+
+button.backButton {
+    width: auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 1.4rem;
+    line-height: 2rem;
+}
+
+button.backButton svg {
+    width: 36px;
+    float: left;
+    margin-right: 0.6rem;
 }
