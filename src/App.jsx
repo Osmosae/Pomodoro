@@ -4,7 +4,7 @@ import Timer from "./features/Timer"
 import { useState } from "react"
 const App = () => {
     const [showSettings, setShowSettings] = useState(false)
-    const [workMinutes, setWorkMinutes] = useState(35)
+    const [workMinutes, setWorkMinutes] = useState(30)
     const [breakMinutes, setBreakMinutes] = useState(10)
 
     return (
