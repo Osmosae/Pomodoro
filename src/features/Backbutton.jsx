@@ -1,3 +1,8 @@
+/**
+ * Renders a back button with an SVG icon and text.
+ * @param {object} props - The props for the button component.
+ * @returns {JSX.Element} - The rendered back button.
+ */
 function BackButton(props) {
     return (
         <button {...props} className="backButton">
