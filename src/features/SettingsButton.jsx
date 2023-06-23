@@ -1,3 +1,9 @@
+/**
+ * Renders a settings button.
+ *
+ * @param {object} props - The properties for the button.
+ * @returns {JSX.Element} The rendered settings button.
+ */
 function SettingsButton(props) {
     return (
         <button {...props} className="settings">
