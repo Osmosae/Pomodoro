@@ -6,21 +6,27 @@ import SettingsButton from "./SettingsButton"
 import { useContext, useState, useEffect, useRef } from "react"
 import SettingsContext from "./SettingsContext"
 
+// React component that displays a timer with circular progress bar
+// and buttons to control the timer and open settings
 function Timer() {
+    // Accessing settings information from the context
     const settingsInfo = useContext(SettingsContext)
+    // State variables
     const [isPaused, setIsPaused] = useState(true)
     const [mode, setMode] = useState("work") // work, break, null
     const [secondsLeft, setSecondsLeft] = useState(0)
-
+    // Ref variables for mutable state
     const secondsLeftRef = useRef(secondsLeft)
     const isPausedRef = useRef(isPaused)
     const modeRef = useRef(mode)
-
+    // Function that decrements the seconds left and updates state
     function tick() {
         secondsLeftRef.current--
         setSecondsLeft(secondsLeftRef.current)
     }
+    // Effect hook
     useEffect(() => {
+        // Function to flip the mode between work and break
         function switchMode() {
             const nextMode = modeRef.current === "work" ? "break" : "work"
             const nextSeconds = (nextMode === "work" ? settingsInfo.workMinutes : settingsInfo.breakMinutes) * 60
@@ -29,10 +35,9 @@ function Timer() {
             setSecondsLeft(nextSeconds)
             secondsLeftRef.current = nextSeconds
         }
-
         secondsLeftRef.current = settingsInfo.workMinutes * 60
         setSecondsLeft(secondsLeftRef.current)
-
+        // Interval for ticking the timer
         const interval = setInterval(() => {
             if (isPausedRef.current) {
                 return
@@ -42,9 +47,10 @@ function Timer() {
             }
             tick()
         }, 1000)
+        // Cleanup function to clear the interval
         return () => clearInterval(interval)
     }, [settingsInfo])
-    // const percentage = 20
+    // Calculate the percentage and remaining time
     const totalSeconds = (mode === "work" ? settingsInfo.workMinutes : settingsInfo.breakMinutes) * 60
     const perc = Math.round((100 * secondsLeft) / totalSeconds)
     const minutes = Math.floor(secondsLeft / 60)
@@ -52,6 +58,7 @@ function Timer() {
     if (seconds < 10) {
         seconds = `0${seconds}`
     }
+    // Render the timer component
     return (
         <div>
             <CircularProgressbar
@@ -66,8 +73,6 @@ function Timer() {
                     textSize: "16px",
                     // How long animation takes to go from one percentage to another, in seconds
                     pathTransitionDuration: 0.5,
-                    // Can specify path transition in more detail, or remove it entirely
-                    // pathTransition: 'none',
                     // Colors
                     pathColor: mode === "work" ? "#ff0000" : "#00ff11",
                     textColor: "#eee",
