@@ -69,7 +69,7 @@ function Timer() {
                     // Can specify path transition in more detail, or remove it entirely
                     // pathTransition: 'none',
                     // Colors
-                    pathColor: `rgba(199, 62, 62, ${perc / 100})`,
+                    pathColor: mode === "work" ? "#ff0000" : "#00ff11",
                     textColor: "#eee",
                     trailColor: `rgba(120, 120, 120, ${perc / 100})`,
                     backgroundColor: "#00ff11",
